@@ -8,6 +8,8 @@ export interface Config {
   adminPassword: string;
   staticDir: string;
   cookieSecure: boolean;
+  /** CSP origin for the RPS page. Empty when RPS_RPC_URL is unset or invalid. */
+  rpsRpcUrl: string;
 }
 
 export function loadDotEnv(path = '.env'): void {
@@ -44,7 +46,29 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
     adminPassword,
     staticDir: env.STATIC_DIR ?? '',
     cookieSecure: env.COOKIE_SECURE === 'true',
+    rpsRpcUrl: rpcOrigin(env.RPS_RPC_URL),
   };
+}
+
+function rpcOrigin(value: string | undefined): string {
+  const trimmed = value?.trim() ?? '';
+  if (!trimmed) return '';
+  let url: URL;
+  try {
+    url = new URL(trimmed);
+  } catch {
+    console.warn('RPS_RPC_URL is not a URL. The RPS page will not add it to connect-src.');
+    return '';
+  }
+  if (url.username || url.password || (url.protocol !== 'http:' && url.protocol !== 'https:')) {
+    console.warn('RPS_RPC_URL must be an http or https URL without a username. It was ignored.');
+    return '';
+  }
+  if (/[\s;]/.test(url.origin)) {
+    console.warn('RPS_RPC_URL origin is not safe to put in a CSP. It was ignored.');
+    return '';
+  }
+  return url.origin;
 }
 
 function required(env: NodeJS.ProcessEnv, key: string): string {

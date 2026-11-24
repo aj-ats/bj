@@ -8,7 +8,9 @@ The game engine is plain TypeScript with no Node imports. The running product is
 
 ## PvP
 
-Heads-up USDC is specified and not built. The work is nine pieces in [docs/pvp/README.md](docs/pvp/README.md). Start at the top of that list. The practice table stays on fake chips.
+Heads-up USDC blackjack is specified and not built. The work is nine pieces in [docs/pvp/README.md](docs/pvp/README.md). Start at the top of that list. The practice table stays on fake chips.
+
+Rock-paper-scissors is a separate local contract on Anvil. The rules are in [docs/rps/README.md](docs/rps/README.md). `npm run chain:e2e` starts a chain on port 8545, deploys the game, and plays a win, a tie, a timeout, and a pause. That port has to be free. The browser table and the static-hosting notes are in [docs/rps/ui.md](docs/rps/ui.md). `npm run rps:dev` serves that page and does not need Postgres.
 
 ## House rules
 

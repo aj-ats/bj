@@ -333,7 +333,10 @@ function renderStage(): void {
     </details>
     <div class="footer">
       <span>Fake chips. Nothing on this table is redeemable.</span>
-      <a href="/admin">House</a>
+      <span class="footer-links">
+        <a href="/rps">Rock paper scissors</a>
+        <a href="/admin">House</a>
+      </span>
     </div>`;
 }
 

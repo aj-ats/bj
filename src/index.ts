@@ -31,6 +31,7 @@ const app = createApp({
   shoeSource: casinoShoe,
   cookieSecure: config.cookieSecure,
   ...(config.staticDir ? { staticDir: config.staticDir } : {}),
+  ...(config.rpsRpcUrl ? { rpsRpcUrl: config.rpsRpcUrl } : {}),
 });
 
 const server = serve({ fetch: app.fetch, hostname: '0.0.0.0', port: config.port }, (info) => {

@@ -306,6 +306,7 @@ kbd {
   font-size: 0.88rem;
 }
 .footer a { color: var(--brass); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 14px; }
 
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }

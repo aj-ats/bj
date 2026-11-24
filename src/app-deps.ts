@@ -9,6 +9,8 @@ export interface AppDeps {
   rulesOverride?: Partial<Pick<Rules, 'reshuffleBelow'>>;
   cookieSecure: boolean;
   staticDir?: string;
+  /** Origin allowed by CSP in addition to the local Anvil RPC. Not a secret. */
+  rpsRpcUrl?: string;
 }
 
 export type AppEnv = { Variables: { adminUser: string } };

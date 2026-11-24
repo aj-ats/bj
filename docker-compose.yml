@@ -31,6 +31,8 @@ services:
       STATIC_DIR: /app/dist/web
       NODE_ENV: production
       PORT: "8080"
+      # CSP origin for the RPS page. The browser dials this RPC. The container does not.
+      RPS_RPC_URL: ${RPS_RPC_URL:-http://127.0.0.1:8545}
     depends_on:
       db:
         condition: service_healthy

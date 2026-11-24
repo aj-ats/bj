@@ -3,6 +3,7 @@ dist
 .git
 tests
 .env
+.env.local
 *.log
 coverage
 .vite

@@ -14,5 +14,5 @@
     "isolatedModules": true,
     "useUnknownInCatchVariables": true
   },
-  "include": ["src", "tests", "vite.config.ts", "vitest.config.ts"]
+  "include": ["src", "tests", "scripts/rps/ui-check.ts", "vite.config.ts", "vitest.config.ts"]
 }
